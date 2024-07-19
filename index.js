@@ -160,15 +160,29 @@ const keys = {
     },
 }
 
+/**
+ * The main game loop that updates and redraws the game.
+ * It uses the `requestAnimationFrame` method to create a smooth animation.
+ * The function clears the canvas, updates the player, invader, and projectiles,
+ * and handles player movement based on key press events.
+ */
 function animate() {
-    // Game loop that updates and redraws the game
+    // Request the next animation frame
     requestAnimationFrame(animate)
+
+    // Clear the canvas with black color
     c.fillStyle = 'black'
     c.fillRect(0,0, canvas.width, canvas.height)
-    invader.update()
-    player.update()
-    projectiles.forEach((projectile, index) => {
 
+    // Update and draw the invader
+    invader.update()
+
+    // Update and draw the player
+    player.update()
+
+    // Update and draw each projectile
+    projectiles.forEach((projectile, index) => {
+        // Remove projectiles that have reached the top of the canvas
         if (projectile.position.y + projectile.radius <= 0) {
             setTimeout(() =>{
                 projectiles.splice(index, 1)
@@ -178,6 +192,7 @@ function animate() {
         }   
     })
 
+    // Handle player movement based on key press events
     if (keys.a.pressed && player.position.x >= 0) {
         player.velocity.x = -5
         player.rotation = -0.15
