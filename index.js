@@ -150,7 +150,7 @@ class Grid {
         }
 
         this.velocity = {
-            x: 0,
+            x: 3,
             y: 0
         }
 
@@ -159,7 +159,7 @@ class Grid {
         const columns = Math.floor(Math.random() * 10 + 5)
         const rows = Math.floor(Math.random() * 5 + 2)
 
-        this.width = columns * 30
+        this.width = columns * 50
 
         for (let x = 0; x < columns; x++) {
 
@@ -179,7 +179,7 @@ class Grid {
 
         this.velocity.y = 0
 
-        if (this.position.x + this.width >= canvas.width || this.position.x <= 0) {
+        if (this.position.x +this.width >= canvas.width || this.position.x <= 0) {
             this.velocity.x = -this.velocity.x
             this.velocity.y = 30
         }
